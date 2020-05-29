@@ -43,9 +43,7 @@ public class HibernateUtil {
 
 				Metadata metadata = sources.getMetadataBuilder().build();
 
-				// To apply logging Interceptor using session factory
 				sessionFactory = metadata.getSessionFactoryBuilder()
-						// .applyInterceptor(new LoggingInterceptor())
 						.build();
 			} catch (Exception e) {
 				if (registry != null) {
