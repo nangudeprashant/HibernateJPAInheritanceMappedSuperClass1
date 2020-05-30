@@ -15,7 +15,11 @@ import com.javalive.entity.CreditAccount;
 import com.javalive.entity.DebitAccount;
 
 /**
- * 
+ * MappedSuperclass - Inheritance is implemented in the domain model only
+ * without reflecting it in the database schema. In this strategy, the parent
+ * classes can’t be entities.
+ * Only two tables get created viz. DebitAccount and CreditAccount. No table for Account class.
+ * This approach is rarely used as it not support polymorphic queries. 
  */
 public class HibernateUtil {
 
@@ -43,8 +47,7 @@ public class HibernateUtil {
 
 				Metadata metadata = sources.getMetadataBuilder().build();
 
-				sessionFactory = metadata.getSessionFactoryBuilder()
-						.build();
+				sessionFactory = metadata.getSessionFactoryBuilder().build();
 			} catch (Exception e) {
 				if (registry != null) {
 					StandardServiceRegistryBuilder.destroy(registry);
